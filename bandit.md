@@ -35,7 +35,8 @@ So to execute this file what we have to do is put quotes around the name of the 
 ## level 3
 again we login to this level as bandit3 and hit ls to see what it contains
 we can use the cd function to navigate to the directory 'inhere' and see what it contains
-we try the `ls` function but we see that there is nothing present.now try the `ls -a` function which also shows the hidden files or files whose names start with a `.`,  
+we try the `ls` function but we see that there is nothing present.
+now try the `ls -a` function which also shows the hidden files or files whose names start with a `.`,  
 thus we can see that a file called `.hidden` which gives us the password for next level.  
 Password:`pIwrPrtPN36QITSp3EQaw936yaFoFgAB`.
 
