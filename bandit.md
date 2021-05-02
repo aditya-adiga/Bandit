@@ -21,13 +21,13 @@ ok so for this level again we have to login into the server but this time with t
 `ssh bandit1@bandit.labs.overthewire.org -p 2220`
 so enter the password that we found in th last level to login and you will be in.
 the file that is present is a dashed file so files starting with - can be opened only by using 
-`./` before the name of the file.\
+`./` before the name of the file.
 
 So we execute the file by typing `cat ./-` This gives us the password for the next level,which happens to be-`CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9`.
 
 ## level 2
 using the method from previous levels you can login into this level.
-Here we can see that we have a file called `spaces in this filename` so whenever we want to access the files with spaces in the name we should quote it then we can open the file.
+Here we can see that we have a file called `spaces in this filename` so whenever we want to access the files with spaces in the name we should quote it then we can open the file. \
 So to execute this file what we have to do is put quotes around the name of the file.
 `cat 'spaces in this filename'` this gives us the password for next level which is
 `UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK`
