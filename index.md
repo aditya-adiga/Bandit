@@ -148,6 +148,6 @@ Basically it just takes an input and passes it out so when we use it with the `2
 
 so when we pass this command:  
 `find / -group bandit6 -user bandit7 -size 33c -readable 2>/dev/null`  
-output :/var/lib/dpkg/info/bandit7.password  
+output :`/var/lib/dpkg/info/bandit7.password`
 
 on executing again we get the password.
