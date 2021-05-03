@@ -45,7 +45,7 @@ So we know that here we want to find the only human readable file is the one tha
 Ok so here we have 10 files here so lets see what option in the `file` command we can use to find this particular file. \
 
 so to use this `file` function we need to check every file name. but we know that all the files have `./-file` common in there name so we can iterate over the files having this as a part of their names to see what kind of file they are if they are of the form ascii then that is the file we are looking for: \
-So we type the command `file ./-file*` and we get the output : \
+So we type the command `file ./-file*` and we get the output :  \
 
 	./-file00: data
 	./-file01: data
@@ -65,26 +65,26 @@ so now to find this file we need to understand what properties that the file nee
 it has to be of type ascii,not executable and of size 1033 bytes which is represented by `1033c`.
  \
 
-so lets see the options that we need to add to the `find` function for this search to work, \
+so lets see the options that we need to add to the `find` function for this search to work,  \
 1. `-size 1033c` for the size constraint
 2. `-type f` cause it is a human readable file.
 3. `! -executable` so that it is not a executable file.
-so together we would put the command together and it would look like: \
+so together we would put the command together and it would look like:  \
 
-`find ./ -size 1033c -type f ! -executable` \
+`find ./ -size 1033c -type f ! -executable`  \
 
 we get the output:`./maybehere07/.file2`
 
-hence we execute this file to get the password for next level \
+hence we execute this file to get the password for next level  \
 `DXjZPULLxYr17uwoI01bNLQbtFemEgo7`
 
 ## level 6
 
-so here again we are given some properties to take care of while finding the file that we are searching for based on that we should execute this particular command: \
+so here again we are given some properties to take care of while finding the file that we are searching for based on that we should execute this particular command:  \
 
-`find / -group bandit6 -user bandit7 -size 33c -readable` \
+`find / -group bandit6 -user bandit7 -size 33c -readable`  \
 
-based on this we get this particular output: \
+based on this we get this particular output:  \
 
 	find: ‘/root’: Permission denied
 	find: ‘/home/bandit28-git’: Permission denied
@@ -132,23 +132,23 @@ based on this we get this particular output: \
 	/var/lib/dpkg/info/bandit7.password
 	find: ‘/var/log’: Permission denied
 	find: ‘/var/cache/apt/archives/partial’: Permission denied
-	find: ‘/var/cache/ldconfig’: Permission denied \
+	find: ‘/var/cache/ldconfig’: Permission denied 
 
 here i was able to identify this particular line which did not say permission denied.
-`/var/lib/dpkg/info/bandit7.password` \
+`/var/lib/dpkg/info/bandit7.password`  \
 
-lets execute this file and hence we get the password: `HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs`. \
+lets execute this file and hence we get the password: `HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs`.  \
 
-So what if we dont want to find this manually and just want to get the output that does not show permission denied then we use the command `2>file` this command redirects the files through `stderr` which checks the output if it is true then it returns the file which does not give any errors like permission denied. \
+So what if we dont want to find this manually and just want to get the output that does not show permission denied then we use the command `2>file` this command redirects the files through `stderr` which checks the output if it is true then it returns the file which does not give any errors like permission denied.  \
 
-this function `>file` returns `stdout` if no other argument like `2` is passed to it, it also gives `stdout` if `1>file` is passed. \
+this function `>file` returns `stdout` if no other argument like `2` is passed to it, it also gives `stdout` if `1>file` is passed.  \
 
-`/dev/null` is the null device it takes any input you want and throws it away. It can be used to suppress any output. \
+`/dev/null` is the null device it takes any input you want and throws it away. It can be used to suppress any output.  \
 
-Basically it just takes an input and passes it out so when we use it with the `2>` we pass the input through the stderr to compare it. \
+Basically it just takes an input and passes it out so when we use it with the `2>` we pass the input through the stderr to compare it.  \
 
-so when we pass this command: \
-`find / -group bandit6 -user bandit7 -size 33c -readable 2>/dev/null` \
-output :/var/lib/dpkg/info/bandit7.password \
+so when we pass this command:  \
+`find / -group bandit6 -user bandit7 -size 33c -readable 2>/dev/null`  \
+output :/var/lib/dpkg/info/bandit7.password  \
 
 on executing again we get the password.
