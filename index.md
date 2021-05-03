@@ -42,10 +42,10 @@ Password:`pIwrPrtPN36QITSp3EQaw936yaFoFgAB`.
 
 ## level 4
 So we know that here we want to find the only human readable file is the one that we need to find. So lets login into the level and see what we see there. \
-Ok so here we have 10 files here so lets see what option in the `file` command we can use to find this particular file. \
+Ok so here we have 10 files here so lets see what option in the `file` command we can use to find this particular file. 
 
 so to use this `file` function we need to check every file name. but we know that all the files have `./-file` common in there name so we can iterate over the files having this as a part of their names to see what kind of file they are if they are of the form ascii then that is the file we are looking for: \
-So we type the command `file ./-file*` and we get the output :  \
+So we type the command `file ./-file*` and we get the output : \
 
 	./-file00: data
 	./-file01: data
@@ -62,10 +62,9 @@ Thus we can see that `./-file07` is the one containg the password so we execute 
 
 ## level 5
 so now to find this file we need to understand what properties that the file needs to have.
-it has to be of type ascii,not executable and of size 1033 bytes which is represented by `1033c`.
- \
+it has to be of type ascii,not executable and of size 1033 bytes which is represented by `1033c`. \
 
-so lets see the options that we need to add to the `find` function for this search to work,  \
+so lets see the options that we need to add to the `find` function for this search to work, \
 1. `-size 1033c` for the size constraint
 2. `-type f` cause it is a human readable file.
 3. `! -executable` so that it is not a executable file.
