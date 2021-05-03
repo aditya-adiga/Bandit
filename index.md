@@ -45,7 +45,7 @@ So we know that here we want to find the only human readable file is the one tha
 Ok so here we have 10 files here so lets see what option in the `file` command we can use to find this particular file. 
 
 so to use this `file` function we need to check every file name. but we know that all the files have `./-file` common in there name so we can iterate over the files having this as a part of their names to see what kind of file they are if they are of the form ascii then that is the file we are looking for: \
-So we type the command `file ./-file*` and we get the output : \
+So we type the command `file ./-file*` and we get the output : 
 
 	./-file00: data
 	./-file01: data
