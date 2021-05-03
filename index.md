@@ -138,16 +138,16 @@ here i was able to identify this particular line which did not say permission de
 
 lets execute this file and hence we get the password: `HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs`.  
 
-So what if we dont want to find this manually and just want to get the output that does not show permission denied then we use the command `2>file` this command redirects the files through `stderr` which checks the output if it is true then it returns the file which does not give any errors like permission denied.  \
+So what if we dont want to find this manually and just want to get the output that does not show permission denied then we use the command `2>file` this command redirects the files through `stderr` which checks the output if it is true then it returns the file which does not give any errors like permission denied.  
 
 this function `>file` returns `stdout` if no other argument like `2` is passed to it, it also gives `stdout` if `1>file` is passed.  
 
-`/dev/null` is the null device it takes any input you want and throws it away. It can be used to suppress any output.  \
+`/dev/null` is the null device it takes any input you want and throws it away. It can be used to suppress any output.  
 
-Basically it just takes an input and passes it out so when we use it with the `2>` we pass the input through the stderr to compare it.  \
+Basically it just takes an input and passes it out so when we use it with the `2>` we pass the input through the stderr to compare it.  
 
 so when we pass this command:  
 `find / -group bandit6 -user bandit7 -size 33c -readable 2>/dev/null`  
-output :/var/lib/dpkg/info/bandit7.password  \
+output :/var/lib/dpkg/info/bandit7.password  
 
 on executing again we get the password.
