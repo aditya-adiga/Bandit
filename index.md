@@ -62,15 +62,15 @@ Thus we can see that `./-file07` is the one containg the password so we execute 
 
 ## level 5
 so now to find this file we need to understand what properties that the file needs to have.
-it has to be of type ascii,not executable and of size 1033 bytes which is represented by `1033c`. \
+it has to be of type ascii,not executable and of size 1033 bytes which is represented by `1033c`. 
 
-so lets see the options that we need to add to the `find` function for this search to work, \
+so lets see the options that we need to add to the `find` function for this search to work, 
 1. `-size 1033c` for the size constraint
 2. `-type f` cause it is a human readable file.
 3. `! -executable` so that it is not a executable file.
-so together we would put the command together and it would look like:  \
+so together we would put the command together and it would look like:  
 
-`find ./ -size 1033c -type f ! -executable`  \
+`find ./ -size 1033c -type f ! -executable`  
 
 we get the output:`./maybehere07/.file2`
 
