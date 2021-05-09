@@ -155,7 +155,7 @@ on executing again we get the password.
 ## level 7
 
 we login into the level as usual using the previous passwords. \
-now we know that we need to search for the line containing the word `millionth` in the text document `data.txt` which is there on this server. \
+now we know that we need to search for the line containing the word `millionth` in the text document `data.txt` which is there on this server. 
 
 So if we want to find a particular word in text document we use the `grep` function which we use to find that particular text which we want. 
 
