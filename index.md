@@ -161,3 +161,24 @@ So if we want to find a particular word in text document we use the `grep` funct
 This gives us the key or the password we are looking for: `cvX2JJa4CFALtqS87jk27qwqGhBM9plV`
 
 Thus we have the password for the next level. 
+
+## level 8
+
+Here we have many text lines and we want to find the line which has not been repeated.
+I have found two ways to solve this problem so let us use this partcular function `uniq` which we can use to find the text which is not repeated. 
+
+First way of using this is using it with other functions.
+
+`cat data.txt | sort | uniq -u`
+
+here we use the sort function to put together the common keys together so we can find the unique key easily then we use the function `uniq -u` which gives us the text line which is not repeated at all.
+
+This gives us the password `UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR`
+
+Another way of solving this problem is by counting the no of times a particular line is repeated then searching for the line which has a frequency of only one which also gives the expected key or password.
+
+For this we will use the command `cat data.txt | sort | uniq -c | grep '1 '` in this the 
+`uniq -c` is used to count the frequency the lines then `grep '1 '` is used to find the line with frequency 1.
+
+This gives the output : `1 UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR`
+
