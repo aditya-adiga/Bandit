@@ -225,7 +225,7 @@ Thus we have the password for the next level.
 
 So for this problem we are going to use the transalte command which is `tr` so what this can be used for is to translate the given letters into the required text based on the substitution cypher which has been put into place.
 
-So we will execute the `data.txt` and then pass it through our translator which is
+So we will execute the `data.txt` and then pass it through our translator which is \
  `tr [A-Za-z] [N-ZA-Mn-za-m]`
 
  So the command will be:
