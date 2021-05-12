@@ -182,3 +182,56 @@ For this we will use the command `cat data.txt | sort | uniq -c | grep '1 '` in 
 
 This gives the output : `1 UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR`
 
+## level 9
+Ok for this level we have been told that the password is preceeded by a number of `=` so one way to solve this problem would be by brute force basically executing this file and looking for it manually which does work after some effort.
+
+So on using this method the password appears to be:`truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk`
+
+Another way of solving this problem would be by using `grep` function along with the `strings` function: \
+`strings data.txt | grep '='`
+
+This gives us the output:
+
+	========== the*2i"4
+	=:G e
+	========== password
+	<I=zsGi
+	Z)========== is
+	A=|t&E
+	Zdb=
+	c^ LAh=3G
+	*SF=s
+	&========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+	S=A.H&^
+
+Here we can see that the password is `truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk`.
+
+Hence the porblem is solved.
+
+## level 10
+The password for the next level is stored in the file data.txt, which contains base64 encoded data.
+
+So this is the problem statement,So we can see that this is encoded text in the base 64 so to convert it into normal language we have to use the command `base64` which has a decoder which can be used to get access to the text that we desire to find.
+
+`base64 data.txt -d`
+
+This gives us the output:
+
+`The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR`
+
+Thus we have the password for the next level.
+
+## level 11
+
+So for this problem we are going to use the transalte command which is `tr` so what this can be used for is to translate the given letters into the required text based on the substitution cypher which has been put into place.
+
+So we will execute the `data.txt` and then pass it through our translator which is
+ `tr [A-Za-z] [N-ZA-Mn-za-m]`
+
+ So the command will be:
+
+ `cat data.txt | tr [A-Za-z] [N-ZA-Mn-za-m]`
+
+ This gives us the output : `The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu`
+
+ 
