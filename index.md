@@ -305,3 +305,26 @@ Which is of the type bzip2 so we use the command to decompress it.
 These kind of decompressions are performed a few more times and then finally a file called 
 `data8` is obtained which is of the type ASCII, thus we execute this file and we get the text displaying the password as `The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL`.
 
+## level 13
+
+So first we login into the server as bandit 13 and we check what and all files are there here:
+
+here we see that there is a file called `sshkey.private` and we get to know that this is the rsa key that we can use to login into the next level.
+So we type the command \
+`ssh bandit14@localhost -i sshkey.private`
+
+This will login us into the system as bandit14 now we need to execute the file which contains the key to this level.
+
+Thus the key will be obtained using the command : `cat /etc/bandit_pass/bandit14` \
+
+We obtain the password `4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e`
+
+## level 14
+
+So in this level we have to connect to the localhost at port no 30000 so to do this we have to use nc that is netcats in order to get the password. \
+
+So we type the command `echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc localhost 30000`
+
+Thus we get the password for the next level that is : \
+`BfMYroe26WYalil77FoDi9qh59eK5xNr` 
+
