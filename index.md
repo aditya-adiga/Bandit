@@ -315,13 +315,13 @@ So we type the command \
 
 This will login us into the system as bandit14 now we need to execute the file which contains the key to this level.
 
-Thus the key will be obtained using the command : `cat /etc/bandit_pass/bandit14` \
+Thus the key will be obtained using the command : `cat /etc/bandit_pass/bandit14` 
 
 We obtain the password `4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e`
 
 ## level 14
 
-So in this level we have to connect to the localhost at port no 30000 so to do this we have to use nc that is netcats in order to get the password. \
+So in this level we have to connect to the localhost at port no 30000 so to do this we have to use nc that is netcats in order to get the password. 
 
 So we type the command `echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc localhost 30000`
 
