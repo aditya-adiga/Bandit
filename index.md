@@ -599,8 +599,15 @@ Thus we get the password i.e. `kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd`
 
 There are few different approaches to solve this so lets see them: 
 
-Here we can approach this problem by directly accessing the bash file from its location: \
-![Screenshot of implementation](https://github.com/aditya-adiga/Bandit/blob/main/images/level18.png?raw=true)
+Here we can approach this problem by directly accessing the bash file from its location: 
+
+	ssh bandit18@bandit.labs.overthewire.org -p 2220 /bin/bash
+	This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+	bandit18@bandit.labs.overthewire.org's password: 
+	ls
+	readme
+	cat readme
+	IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
 
 Thus the password: `IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x`.
 
