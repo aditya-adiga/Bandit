@@ -234,7 +234,7 @@ So we will execute the `data.txt` and then pass it through our translator which 
 
  This gives us the output : `The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu`
 
- ## level 12
+## level 12
 
 So here what we do is check what file contains so here it basically contains a hexdump which is hexadeciamal representation of the binary file.So when we execute this file we get:
 
@@ -328,3 +328,254 @@ So we type the command `echo "4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e" | nc localhost 3
 Thus we get the password for the next level that is : \
 `BfMYroe26WYalil77FoDi9qh59eK5xNr` 
 
+
+## level 15
+
+s_client implements a generic SSL/TLS client which can establish a transparent connection to a remote server speaking SSL/TLS. 
+
+`openssl s_client -ign_eof -connect localhost:30001`
+
+This command is used to connect to network on the local network at the port `30001` through `openssl` using `s_client` once we type this command we get \
+
+	CONNECTED(00000003)
+	depth=0 CN = localhost
+	verify error:num=18:self signed certificate
+	verify return:1
+	depth=0 CN = localhost
+	verify return:1
+	---
+	Certificate chain
+	 0 s:/CN=localhost
+	   i:/CN=localhost
+	---
+	Server certificate
+	-----BEGIN CERTIFICATE-----
+	MIICBjCCAW+gAwIBAgIEHxhZ+zANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDDAls
+	b2NhbGhvc3QwHhcNMjEwODA1MjEyMjEzWhcNMjIwODA1MjEyMjEzWjAUMRIwEAYD
+	VQQDDAlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALqNmx6R
+	csRsPgzRcRsq5oQ4BC9AT/Yu473WbK4SRjHOWwuA4Oqk9w8SLKYZ39FrDEnXSZJw
+	xqKPR0AH72+l7Itv7X1H07VbeMTQoJVm6NsJm3cuyyxjRwfaIOUFsRtQQyvQlmw7
+	3CgTbd3wEk1CD+6jlksJj801Vd0uvZh1VVERAgMBAAGjZTBjMBQGA1UdEQQNMAuC
+	CWxvY2FsaG9zdDBLBglghkgBhvhCAQ0EPhY8QXV0b21hdGljYWxseSBnZW5lcmF0
+	ZWQgYnkgTmNhdC4gU2VlIGh0dHBzOi8vbm1hcC5vcmcvbmNhdC8uMA0GCSqGSIb3
+	DQEBBQUAA4GBADjhbe3bTnDWsS4xt8FFg7PJIqNAxF6QjP+7xzJ4yMvWtPP6tVXo
+	F7SNI52juwH0nFDyM9KOrM/AknWqCYF+yfz6bLD7MaKZ+Kg3DiLaoVJOrVg6Y02+
+	0vq1rLsqGko5wamCFamx7X9CtFsV0WQjZdA53Na/VwehtlFpf/p20VAi
+	-----END CERTIFICATE-----
+	subject=/CN=localhost
+	issuer=/CN=localhost
+	---
+	No client certificate CA names sent
+	Peer signing digest: SHA512
+	Server Temp Key: X25519, 253 bits
+	---
+	SSL handshake has read 1019 bytes and written 269 bytes
+	Verification error: self signed certificate
+	---
+	New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+	Server public key is 1024 bit
+	Secure Renegotiation IS supported
+	Compression: NONE
+	Expansion: NONE
+	No ALPN negotiated
+	SSL-Session:
+	    Protocol  : TLSv1.2
+	    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+	    Session-ID: 120E50E6A132B58E26F7AE072D055FD14F0C77E0FCA4C86BA0B85D85206682E1
+	    Session-ID-ctx: 
+	    Master-Key: 7C834CF4F19F6DC6D260EC55975471117785EB0CAB0FE08AD8B79A2E5230C7BED73A80911DE1F4F7003AAF1F657F95CF
+	    PSK identity: None
+	    PSK identity hint: None
+	    SRP username: None
+	    TLS session ticket lifetime hint: 7200 (seconds)
+	    TLS session ticket:
+	    0000 - 3a a9 fe 3b 12 a1 ed 2b-8d a6 cf aa 23 c9 12 88   :..;...+....#...
+	    0010 - 62 b6 38 19 c2 8a 83 4b-96 a3 f5 cf 7c 3c 87 18   b.8....K....|<..
+	    0020 - 6b 55 92 69 98 ac 70 10-96 f1 4a cf b3 b3 bb 3a   kU.i..p...J....:
+	    0030 - db d2 98 78 56 91 58 6e-28 bf 92 eb 4f 5f ee 7f   ...xV.Xn(...O_..
+	    0040 - 92 8f 97 3f 24 b3 55 52-90 2b cd e2 1b 9c 54 50   ...?$.UR.+....TP
+	    0050 - 80 23 91 55 ba cb 9b dc-c6 04 3e 3d d7 b8 d8 77   .#.U......>=...w
+	    0060 - 20 8a 66 45 06 0f 79 31-11 bb b2 bf ab 67 de a7    .fE..y1.....g..
+	    0070 - 72 ce 38 aa de 4d 89 b1-52 41 4d 16 7d 10 7a 7c   r.8..M..RAM.}.z|
+	    0080 - 08 23 43 5b e1 fb ce 56-5f ac 6d 66 cc 16 88 92   .#C[...V_.mf....
+	    0090 - 5b 96 71 96 e8 5c 75 3f-de e0 9f 7f 1c a9 e4 7d   [.q..\u?.......}
+	    Start Time: 1628707108
+	    Timeout   : 7200 (sec)
+	    Verify return code: 18 (self signed certificate)
+	    Extended master secret: yes
+	---
+
+
+So here we enter the password of this level to get the password of the next level:
+
+	BfMYroe26WYalil77FoDi9qh59eK5xNr
+	Correct!
+	cluFn7wTiGryunymYOu4RcffSxQluehd
+	closed
+
+Thus we get the password `cluFn7wTiGryunymYOu4RcffSxQluehd`
+
+## level 16
+
+So in order to find the passkey we are going to use `nmap` in order to find the open ports.
+
+`nmap -A -p 31000-32000 localhost`
+
+This gives us:
+
+	Starting Nmap 7.40 ( https://nmap.org ) at 2021-08-11 21:39 CEST
+	Nmap scan report for localhost (127.0.0.1)
+	Host is up (0.00037s latency).
+	Not shown: 996 closed ports
+	PORT      STATE SERVICE     VERSION
+	31046/tcp open  echo
+	31518/tcp open  ssl/echo
+	| ssl-cert: Subject: commonName=localhost
+	| Subject Alternative Name: DNS:localhost
+	| Not valid before: 2021-08-05T21:23:01
+	|_Not valid after:  2022-08-05T21:23:01
+	|_ssl-date: TLS randomness does not represent time
+	31691/tcp open  echo
+	31790/tcp open  ssl/unknown
+	| fingerprint-strings: 
+	|   FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LDAPSearchReq, LPDString, RTSPRequest, SIPOptions, SSLSessionReq, TLSSessionReq: 
+	|_    Wrong! Please enter the correct current password
+	| ssl-cert: Subject: commonName=localhost
+	| Subject Alternative Name: DNS:localhost
+	| Not valid before: 2021-08-05T21:23:01
+	|_Not valid after:  2022-08-05T21:23:01
+	|_ssl-date: TLS randomness does not represent time
+	31960/tcp open  echo
+	1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+	SF-Port31790-TCP:V=7.40%T=SSL%I=7%D=8/11%Time=61142780%P=x86_64-pc-linux-g
+	SF:nu%r(GenericLines,31,"Wrong!\x20Please\x20enter\x20the\x20correct\x20cu
+	SF:rrent\x20password\n")%r(GetRequest,31,"Wrong!\x20Please\x20enter\x20the
+	SF:\x20correct\x20current\x20password\n")%r(HTTPOptions,31,"Wrong!\x20Plea
+	SF:se\x20enter\x20the\x20correct\x20current\x20password\n")%r(RTSPRequest,
+	SF:31,"Wrong!\x20Please\x20enter\x20the\x20correct\x20current\x20password\
+	SF:n")%r(Help,31,"Wrong!\x20Please\x20enter\x20the\x20correct\x20current\x
+	SF:20password\n")%r(SSLSessionReq,31,"Wrong!\x20Please\x20enter\x20the\x20
+	SF:correct\x20current\x20password\n")%r(TLSSessionReq,31,"Wrong!\x20Please
+	SF:\x20enter\x20the\x20correct\x20current\x20password\n")%r(Kerberos,31,"W
+	SF:rong!\x20Please\x20enter\x20the\x20correct\x20current\x20password\n")%r
+	SF:(FourOhFourRequest,31,"Wrong!\x20Please\x20enter\x20the\x20correct\x20c
+	SF:urrent\x20password\n")%r(LPDString,31,"Wrong!\x20Please\x20enter\x20the
+	SF:\x20correct\x20current\x20password\n")%r(LDAPSearchReq,31,"Wrong!\x20Pl
+	SF:ease\x20enter\x20the\x20correct\x20current\x20password\n")%r(SIPOptions
+	SF:,31,"Wrong!\x20Please\x20enter\x20the\x20correct\x20current\x20password
+	SF:\n");
+	Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+	Nmap done: 1 IP address (1 host up) scanned in 88.23 seconds
+
+Here we can see that the port that there are 2 ports which are of the service ssl i.e 31518 and 31790.
+
+Hence we try both of them and get success with port number 31790.
+
+	openssl s_client -connect localhost:31790
+	CONNECTED(00000003)
+	depth=0 CN = localhost
+	verify error:num=18:self signed certificate
+	verify return:1
+	depth=0 CN = localhost
+	verify return:1
+	---
+	Certificate chain
+	 0 s:/CN=localhost
+	   i:/CN=localhost
+	---
+	Server certificate
+	-----BEGIN CERTIFICATE-----
+	MIICBjCCAW+gAwIBAgIEatsK7TANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDDAls
+	b2NhbGhvc3QwHhcNMjEwODA1MjEyMzAxWhcNMjIwODA1MjEyMzAxWjAUMRIwEAYD
+	VQQDDAlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALbshxNY
+	mdJ/7RpASCHk+XULoBymcRoKY9tPU25zhhPmrFAyv0HNXG/GqPjOxI4MHG627HOf
+	b00a/ikeDUTVdCiDXhungyUx6W07H3uiHHbfNLs1QGl2GPdBVA+z5DZcNsWJ1QB5
+	888HEzp8YNWyeHnP+5gy5LqlX5hUkF1eu6C1AgMBAAGjZTBjMBQGA1UdEQQNMAuC
+	CWxvY2FsaG9zdDBLBglghkgBhvhCAQ0EPhY8QXV0b21hdGljYWxseSBnZW5lcmF0
+	ZWQgYnkgTmNhdC4gU2VlIGh0dHBzOi8vbm1hcC5vcmcvbmNhdC8uMA0GCSqGSIb3
+	DQEBBQUAA4GBABVCD/dhWpgN9KC5Eb6hd9ToreRhof44OQaHalJtsayPBBMTK3Lp
+	KC88rNVJW+cX0z+eUe6en0RIvU56dLNT+zm9cbDvCV1cumz4++nauWes/11eA5aG
+	2NNgKQHYvT+bOfo3lhOQNwtzpO4MX1sGMjO4dlS4AmxTdjz0UVUPLamk
+	-----END CERTIFICATE-----
+	subject=/CN=localhost
+	issuer=/CN=localhost
+	---
+	No client certificate CA names sent
+	Peer signing digest: SHA512
+	Server Temp Key: X25519, 253 bits
+	---
+	SSL handshake has read 1019 bytes and written 269 bytes
+	Verification error: self signed certificate
+	---
+	New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+	Server public key is 1024 bit
+	Secure Renegotiation IS supported
+	Compression: NONE
+	Expansion: NONE
+	No ALPN negotiated
+	SSL-Session:
+	    Protocol  : TLSv1.2
+	    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+	    Session-ID: E30F9731EDE81F7A3ED1DEF8CC6FBB34192360B92B88B4BC6FDECF44062F9832
+	    Session-ID-ctx: 
+	    Master-Key: D8E12C5F557190170DEC029F6B0B1EABE219591F8C8C4CE95850422415033F85678BDA9E99D79F9C0BA51B4268015655
+	    PSK identity: None
+	    PSK identity hint: None
+	    SRP username: None
+	    TLS session ticket lifetime hint: 7200 (seconds)
+	    TLS session ticket:
+	    0000 - 30 d5 a9 3d 7d a2 f1 16-f5 b3 32 79 c1 92 42 1a   0..=}.....2y..B.
+	    0010 - 5b 3c 71 40 e8 de 78 eb-f4 ec 27 b6 71 e7 54 c6   [<q@..x...'.q.T.
+	    0020 - 7b b1 a5 55 f8 0d 2f 06-c6 a9 11 9e 58 fe 4c 26   {..U../.....X.L&
+	    0030 - 34 0a e6 ee ac 0f dd 6a-83 2c 8f 7e a6 8d a8 85   4......j.,.~....
+	    0040 - 55 4c 82 89 75 fa f2 4e-c1 54 72 85 a7 e4 cd 3f   UL..u..N.Tr....?
+	    0050 - ad 5d bb 9e 8f c5 fb 47-b1 b3 f8 11 58 e7 db 9c   .].....G....X...
+	    0060 - 4b 81 b7 31 7a e9 e7 37-69 cc ec d6 6a a9 5f 8b   K..1z..7i...j._.
+	    0070 - 72 af 30 e2 d0 cc 38 c8-2e d6 5f 28 b9 1a 97 15   r.0...8..._(....
+	    0080 - 80 56 20 f4 3d ee cd 02-37 74 ce 85 8b b3 e6 e9   .V .=...7t......
+	    0090 - 03 d6 8b 81 88 e4 04 e8-dd d4 f1 30 50 db 7b 19   ...........0P.{.
+	    Start Time: 1628710411
+	    Timeout   : 7200 (sec)
+	    Verify return code: 18 (self signed certificate)
+	    Extended master secret: yes
+	---
+	cluFn7wTiGryunymYOu4RcffSxQluehd
+	Correct!
+	-----BEGIN RSA PRIVATE KEY-----
+	MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+	imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+	Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+	DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+	JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+	x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+	KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+	J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+	d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+	YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+	vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
+	+TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT 
+	8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+	SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+	HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+	SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+	R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+	Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+	R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+	L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+	blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+	YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+	77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+	dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+	vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+	-----END RSA PRIVATE KEY-----
+	closed
+
+
+Thus the RSA key is what we will use to login to the next level using ssh. \
+First we save this RSA key in a private file as `sshkey.private` and then we use this to ssh into the server.(If you get permission errors then `chmod 600` will solve the problem).
+
+`ssh bandit17@bandit.labs.overthewire.org -p 2220 -i sshkey.private`
+
+This gives us entry to the next level where we can get its password with the command : `cat /etc/bandit_pass/bandit17`
+
+password:`xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn`
