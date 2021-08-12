@@ -600,6 +600,6 @@ Thus we get the password i.e. `kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd`
 There are few different approaches to solve this so lets see them: 
 
 Here we can approach this problem by directly accessing the bash file from its location: \
-![Screenshot of implementation](https://aditya-adiga.github.com/Bandit/images/level18.png)
+![Screenshot of implementation](https://aditya-adiga.github.com/Bandit/images/leve18.png)
 
 
