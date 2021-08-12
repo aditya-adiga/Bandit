@@ -579,3 +579,27 @@ First we save this RSA key in a private file as `sshkey.private` and then we use
 This gives us entry to the next level where we can get its password with the command : `cat /etc/bandit_pass/bandit17`
 
 password:`xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn`
+
+## level 17
+
+Here we use the function `diff` to find the difference between the two files.
+
+`diff passwords.new passwords.old`
+
+This returns:
+
+	42c42
+	< kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+	---
+	> w0Yfolrc5bwjS4qw5mq1nnQi6mF03bii
+
+Thus we get the password i.e. `kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd` 
+
+## level 18
+
+There are few different approaches to solve this so lets see them: 
+
+Here we can approach this problem by directly accessing the bash file from its location: \
+![Screenshot of implementation](images/level18.png)
+
+
