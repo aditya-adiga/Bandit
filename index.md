@@ -602,4 +602,34 @@ There are few different approaches to solve this so lets see them:
 Here we can approach this problem by directly accessing the bash file from its location: \
 ![Screenshot of implementation](https://github.com/aditya-adiga/Bandit/blob/main/images/level18.png?raw=true)
 
+Thus the password: `IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x`.
+
+## level 19
+
+So once we login we can see that there is file called `bandit20-do` here so we need to see what type of a file it is so we use the command `file` to figuire that out.
+
+`file bandit20-do`
+
+on passing this command we get:
+
+	bandit20-do: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=8e941f24b8c5cd0af67b22b724c57e1ab92a92a1, not stripped
+
+now we type `ls -la` to get more information regarding the type of file:
+
+on doing this we find that the owner of this file is bandit20:
+
+	total 28
+	drwxr-xr-x  2 root     root     4096 May  7  2020 .
+	drwxr-xr-x 41 root     root     4096 May  7  2020 ..
+	-rwsr-x---  1 bandit20 bandit19 7296 May  7  2020 bandit20-do
+	-rw-r--r--  1 root     root      220 May 15  2017 .bash_logout
+	-rw-r--r--  1 root     root     3526 May 15  2017 .bashrc
+	-rw-r--r--  1 root     root      675 May 15  2017 .profile
+
+Thus we try to find the password by setting id as `bandit20` as `bandit20-do`.
+
+`./bandit20-do cat /etc/bandit_pass/bandit20`
+
+on doing this we get the password to the next level:
+`GbKksEFF4yrVs6il55v6gwY5aVje5f0j`.
 
