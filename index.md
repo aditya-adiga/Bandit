@@ -640,3 +640,153 @@ Thus we try to find the password by setting id as `bandit20` as `bandit20-do`.
 on doing this we get the password to the next level:
 `GbKksEFF4yrVs6il55v6gwY5aVje5f0j`.
 
+## level 20
+
+### question 
+ it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21). /
+
+### solution
+First we set up a TCP server at a random port 56123 and let it run in the background.
+
+	echo 'GbKksEFF4yrVs6il55v6gwY5aVje5f0j' | nc -lp 56123 &
+	[1] 32382
+
+Now we use the setuid file to connect to this port .(Note as we have not mentioned all this will be done on the localhost.)
+
+	./suconnect 56123
+	Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+	Password matches, sending next password
+	bandit20@bandit:~$ gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+Thus the password is found i.e:
+`gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr`
+
+## level 21
+
+### question
+
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+### solution
+
+first we naveigate to `/etc/cron.d/` and then we see what this directory contains and we see that there is a file called `cronjob_bandit22` now we try to find out what this file contains: \
+
+	bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22
+	@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+	* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+
+Now we can see that there is the script file which is being executed at certain time intervals using crontab so what we decide is to execute this file to find out commands what it contains:
+
+	bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh
+	#!/bin/bash
+	chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+	cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+Now we execute `/tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv` to find the password for the level:
+
+	bandit21@bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+	Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+
+Thus we get the password for next level:
+
+	Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+
+## level 22
+
+### question
+
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+NOTE: Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.
+
+### solution
+
+here again as in previous level we navigate to `/etc/cron.d` and then here we find the file 
+`cronjob_bandit23` and we execute this to find what is being executed to find another script file 
+`/usr/bin/cronjob_bandit23.sh` Now we execute this to see what it contains we get:
+
+	bandit22@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit23.sh
+	#!/bin/bash
+	myname=$(whoami)
+	mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+	echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+	cat /etc/bandit_pass/$myname > /tmp/$mytarget
+
+As we can see here that my target contains the location of the file contatining password in tmp so in order to find that we replace `$myname` with `bandit23` this gives us the name of the file :
+
+	bandit22@bandit:/etc/cron.d$ echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+	8ca319486bfbbc3663ea0fbe81326349
+
+Now we execute this file to get the password:
+
+	bandit22@bandit:/etc/cron.d$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+	jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+
+Hence we get the password i.e `jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n`
+
+## level 23
+
+### question
+
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!
+
+NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…
+
+### solution
+So here as in previous problem we open the script file :
+
+	bandit23@bandit:~$ cat /etc/cron.d/cronjob_bandit24
+	@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+	* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+	bandit23@bandit:~$ cat /usr/bin/cronjob_bandit24.sh
+	#!/bin/bashmyname=$(whoami)cd /var/spool/$myname
+	echo "Executing and deleting all scripts in /var/spool/$myname:"
+	for i in * .*;
+	do
+	    if [ "$i" != "." -a "$i" != ".." ];
+	    then
+	        echo "Handling $i"
+	        timeout -s 9 60 ./$i
+	        rm -f ./$i
+	    fi
+	done
+
+So here we can see that every file in `/var/spool` is executed so we need to write a script to copy the password of the next level and place that script in this folder so that it will also be executed and we can find the password.
+
+	bandit23@bandit:/etc/cron.d$ cd /tmp
+	bandit23@bandit:/tmp$ mkdir temp
+	bandit23@bandit:/tmp$ cd temp
+	bandit23@bandit:/tmp/temp$ ls
+	bandit23@bandit:/tmp/temp$ touch passfetch.sh
+	bandit23@bandit:/tmp/temp$ chmod 777 passfetch.sh 
+	bandit23@bandit:/tmp/temp$ ls -la
+	total 1992
+	drwxr-sr-x 2 bandit23 root    4096 Aug 16 21:34 .
+	drwxrws-wt 1 root     root 2031616 Aug 16 21:35 ..
+	-rwxrwxrwx 1 bandit23 root       0 Aug 16 21:34 passfetch.sh
+	bandit23@bandit:/tmp/temp$ man chmod
+	bandit23@bandit:/tmp/temp$ vim passfetch.sh
+	bandit23@bandit:/tmp/temp$ touch password
+	bandit23@bandit:/tmp/temp$ chmod 777 password
+
+So here we have created two files `passfetch.sh` is the script which is supposed to copy the password from the location and place it in the file `password`.
+
+#### contents of passfetch.sh
+	  1 #!/bin/bash                                        
+	  2 cat /etc/bandit_pass/bandit24 > /tmp/temp/password                                        
+
+Now we place this script file in the location `/var/spool/`
+
+	bandit23@bandit:/tmp/temp$ cp passfetch.sh /var/spool/bandit24
+	bandit23@bandit:/tmp/temp$ ls -al /var/spool/bandit24/passfetch.sh
+	-rwxr-xr-x 1 bandit23 bandit23 63 Aug 16 21:41 /var/spool/bandit24/passfetch.sh
+	bandit23@bandit:/tmp/temp$ cat password
+	UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+
+Thus on doing this and waiting for a while the password is fed into the file `password` i.e. when the script gets executed in the crontab.
+
+Thus we get the password:
+
+	UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ	
